@@ -15,6 +15,7 @@
     "trailsjs"
   ],
   "dependencies": {
+    "node-github": "0.0.3",
     "trailpack-footprints": "^2.0.0",
     "trailpack-hapi": "^2.2.0",
     "trailpack-repl": "v2-latest",
