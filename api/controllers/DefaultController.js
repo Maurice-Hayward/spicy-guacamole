@@ -10,11 +10,10 @@ const Controller = require('trails/controller')
  * @this TrailsApp
  */
 module.exports = class DefaultController extends Controller {
-
   /**
    * Return some info about this application
    */
-  info (request, reply) {
+  info(request, reply) {
     reply(this.app.services.DefaultService.getApplicationInfo())
   }
 }
