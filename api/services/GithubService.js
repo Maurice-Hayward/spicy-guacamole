@@ -2,6 +2,8 @@
 
 const Service = require('trails/service')
 
+const _ = require('lodash')
+
 const github = require('../../lib/index').GithubClient
 
 /**
@@ -22,6 +24,19 @@ module.exports = class GithubService extends Service {
     while (github.hasNextPage(res)) {
       res = await github.getNextPage(res)
       issues.push(...res.data)
+    }
+
+    if (issues) {
+      issues = issues.map(function(i) {
+        return {
+          id: i.id,
+          number: i.number,
+          title: i.title,
+          body: i.body,
+          labels: _.cloneDeep(i.labels),
+          reactions: _cloneDeep(i.reactions)
+        }
+      })
     }
 
     return issues
