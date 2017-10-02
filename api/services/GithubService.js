@@ -32,14 +32,8 @@ module.exports = class GithubService extends Service {
     }*/
 
     if (issues) {
-      issues = issues.map(function(i) {
-        return {
-          id: i.id,
-          number: i.number,
-          title: i.title,
-          body: i.body,
-          labels: i.labels
-        }
+      issues = issues.map(i => {
+        return i.body
       })
     }
 
