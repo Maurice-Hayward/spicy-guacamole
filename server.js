@@ -6,6 +6,8 @@
 
 'use strict'
 
+require('dotenv').config()
+
 const TrailsApp = require('trails')
 const app = require('./')
 const server = new TrailsApp(app)
