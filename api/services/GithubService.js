@@ -38,8 +38,7 @@ module.exports = class GithubService extends Service {
           number: i.number,
           title: i.title,
           body: i.body,
-          labels: _.cloneDeep(i.labels),
-          reactions: _.cloneDeep(i.reactions)
+          labels: i.labels
         }
       })
     }

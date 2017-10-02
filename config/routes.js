@@ -10,22 +10,31 @@
 'use strict'
 
 module.exports = [
-
-  /**
-   * Render the HelloWorld view
-   */
+  /*************************************************************
+    * Server Rendered HTML Page Endpoints                        *
+    *************************************************************/
   {
     method: 'GET',
     path: '/',
     handler: 'ViewController.helloWorld'
   },
 
-  /**
-   * Constrain the DefaultController.info handler to accept only GET requests.
-   */
+  /*************************************************************
+  * JSON API ENDPOINTS                                         *
+  *************************************************************/
   {
-    method: [ 'GET' ],
+    method: ['GET'],
     path: '/api/v1/default/info',
     handler: 'DefaultController.info'
+  },
+
+  {
+    method: ['GET'],
+    path: '/api/v1/github/test',
+    handler: 'GithubController.test'
   }
+
+  /*************************************************************
+*Static File  Endpoints                        *
+*************************************************************/
 ]
