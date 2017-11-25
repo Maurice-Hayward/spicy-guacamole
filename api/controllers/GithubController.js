@@ -13,7 +13,9 @@ module.exports = class GithubController extends Controller {
     const repo = request.query.repo
     try {
       const issues = await this.app.services.GithubService.getAllRepoIssues(owner, repo)
-      let issueSentimentResults = this.app.services.SentimentService.getAverageSentiment(issues)
+      let issueSentimentResults = await this.app.services.SentimentService.getAverageSentiment(
+        issues
+      )
 
       reply(_.extend({}, { owner, repo }, issueSentimentResults))
     } catch (e) {

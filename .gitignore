@@ -3,3 +3,4 @@ coverage
 .tmp
 npm-debug.log
 .env
+sentiment-github-gcloud-key.json
