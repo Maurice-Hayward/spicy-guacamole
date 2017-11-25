@@ -26,6 +26,7 @@ module.exports = class GithubService extends Service {
       per_page: 100
     })
     issues.push(...res.data)
+
     /*while (github.hasNextPage(res)) {
       res = await github.getNextPage(res)
       issues.push(...res.data)
