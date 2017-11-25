@@ -11,8 +11,8 @@
 
 module.exports = [
   /*************************************************************
-    * Server Rendered HTML Page Endpoints                        *
-    *************************************************************/
+   * Server Rendered HTML Page Endpoints                        *
+   *************************************************************/
   {
     method: 'GET',
     path: '/',
@@ -20,8 +20,8 @@ module.exports = [
   },
 
   /*************************************************************
-  * JSON API ENDPOINTS                                         *
-  *************************************************************/
+   * JSON API ENDPOINTS                                         *
+   *************************************************************/
   {
     method: ['GET'],
     path: '/api/v1/default/info',
@@ -30,11 +30,11 @@ module.exports = [
 
   {
     method: ['GET'],
-    path: '/api/v1/github/test',
-    handler: 'GithubController.test'
+    path: '/api/v1/github/sentiment/{owner}/{repo}',
+    handler: 'GithubController.sentiment'
   }
 
   /*************************************************************
-*Static File  Endpoints                        *
-*************************************************************/
+   *Static File  Endpoints                        *
+   *************************************************************/
 ]

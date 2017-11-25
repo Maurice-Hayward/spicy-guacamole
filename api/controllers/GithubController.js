@@ -8,9 +8,9 @@ const _ = require('lodash')
  * @description TODO document Controller.
  */
 module.exports = class GithubController extends Controller {
-  async test(request, reply) {
-    const owner = request.query.owner
-    const repo = request.query.repo
+  async sentiment(request, reply) {
+    const owner = request.params.owner
+    const repo = request.params.repo
     try {
       const issues = await this.app.services.GithubService.getAllRepoIssues(owner, repo)
       let issueSentimentResults = await this.app.services.SentimentService.getAverageSentiment(
