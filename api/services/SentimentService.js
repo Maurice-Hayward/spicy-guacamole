@@ -15,24 +15,27 @@ const client = new language.LanguageServiceClient()
  */
 module.exports = class SentimentService extends Service {
   async getAverageSentiment(githubIssueList) {
-    let totalSentiment = 0
+    try {
+      let totalSentiment = 0
 
-    for (const issue of githubIssueList) {
-      const document = {
-        content: issue,
-        type: 'PLAIN_TEXT'
+      for (const issue of githubIssueList) {
+        const document = {
+          content: issue,
+          type: 'PLAIN_TEXT'
+        }
+
+        const result = await client.analyzeSentiment({ document: document })
+        const sentiment = result[0].documentSentiment
+
+        const sentivalue = sentiment.score * sentiment.magnitude
+
+        totalSentiment += sentivalue
       }
 
-      const result = await client.analyzeSentiment({ document: document })
-      const sentiment = result[0].documentSentiment
-
-      const sentivalue = sentiment.score * sentiment.magnitude
-
-      totalSentiment += sentivalue
+      const averageSentiment = totalSentiment / githubIssueList.length
+    } catch (e) {
+      console.error(e)
     }
-
-    const averageSentiment = totalSentiment / githubIssueList.length
-
     return { count: githubIssueList.length, averageSentiment }
   }
 }
