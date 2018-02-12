@@ -5,7 +5,7 @@ A lot of open source projects on GitHub are similar ( e.g. Underscore.js vs. Lod
 # Get Started
 
 1. Follow steps 1-4 from the google cloud nodejs example app [here](https://github.com/googleapis/nodejs-language/#quickstart)
-2. Following the above steps you should have authentication json. Put it in the root of the project folder.
+2. Following the above steps you should have an authentication json. Put it in the root of the project folder.
 3. Create the below .env file adding your google cloud info. Put this file in the root of the project folder
 
 ```
