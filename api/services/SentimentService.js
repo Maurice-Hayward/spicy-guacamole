@@ -14,27 +14,27 @@ const client = new language.LanguageServiceClient();
  * @description TODO document Service
  */
 module.exports = class SentimentService extends Service {
-  async getAverageSentiment(githubIssueList) {
+  async getAverageSentiment(githubIssues) {
     try {
-      let totalSentiment = 0;
-
-      for (const issue of githubIssueList) {
+      let githubIssuesPromises = githubIssues.map(issue => {
         const document = {
           content: issue,
           type: "PLAIN_TEXT"
         };
+        return client.analyzeSentiment({ document: document });
+      });
 
-        const result = await client.analyzeSentiment({ document: document });
+      let results = await Promise.all(githubIssuesPromises);
+
+      let count = results.length;
+
+      let averageSentiment = results.reduce((average, result) => {
         const sentiment = result[0].documentSentiment;
-
         const sentivalue = sentiment.score * sentiment.magnitude;
+        return average + sentivalue / githubIssues.length;
+      }, 0);
 
-        totalSentiment += sentivalue;
-      }
-
-      const averageSentiment = totalSentiment / githubIssueList.length;
-
-      return { count: githubIssueList.length, averageSentiment };
+      return { count, averageSentiment };
     } catch (e) {
       console.error(e);
     }
