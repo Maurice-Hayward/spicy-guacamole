@@ -14,3 +14,15 @@ CLIENT_ID=ADD_YOUR_CLIENT_ID_HERE
 CLIENT_SECRET=ADD_YOUR_CLIENT_SECRET_HERE
 GOOGLE_APPLICATION_CREDENTIALS=ADD_THE_PATH_TO_YOUR_AUTHENTICATION_JSON_HERE
 ```
+
+4. Install dependencies
+
+```
+npm install
+```
+
+5. Run the application
+
+```
+npm start
+```
